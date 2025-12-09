@@ -16,11 +16,11 @@ body {
 }
 
 /* ==============================
-   PANEL — SAME STYLE, SMALLER
+   PANEL — SAME STYLE, JUST SMALLER
 ================================= */
 .panel {
-  width: 165px;          /* smaller + narrower for sidebar */
-  padding: 12px;         /* slightly tighter padding */
+  width: 150px;          /* ↓ smaller */
+  padding: 10px;         /* ↓ reduced padding */
   border-radius: 22px;
 
   background: linear-gradient(to bottom, #FFFFFF 0%, #F4F3F1 100%);
@@ -52,7 +52,7 @@ body {
    MINI LUXE SECTIONS (same style)
 ================================= */
 .section {
-  padding: 9px 10px;      /* slightly smaller */
+  padding: 8px 9px;      /* ↓ smaller */
   border-radius: 18px;
 
   background: linear-gradient(to bottom, #FFFFFF 0%, #F6F5F4 100%);
@@ -85,20 +85,20 @@ body {
   opacity: 0.6;
 }
 
-/* percentage text */
+/* percentage */
 .percent {
   font-family: "Cormorant Garamond", serif;
-  font-size: 17px;        /* slightly down from 20 */
+  font-size: 17px;
   margin-bottom: 5px;
   color: #3A3938;
 }
 
 /* ==============================
-   PROGRESS BAR (same style, thinner)
+   PROGRESS BAR
 ================================= */
 .bar {
   width: 100%;
-  height: 6px;            /* was 8px */
+  height: 6px;
   background: linear-gradient(to bottom, #EAE7E4, #D7D4CF);
   border-radius: 40px;
   overflow: hidden;
@@ -116,7 +116,7 @@ body {
   position: relative;
 }
 
-/* shimmer — same feel, scaled */
+/* shimmer */
 .fill::after {
   content: "";
   position: absolute;
@@ -196,7 +196,7 @@ function calcProgress() {
   const endM   = new Date(now.getFullYear(), now.getMonth()+1, 1);
   const m      = ((now - startM)/(endM - startM))*100;
 
-  // WEEK (Monday-based)
+  // WEEK
   const dow    = (now.getDay() + 6) % 7;
   const startW = new Date(now);
   startW.setDate(now.getDate() - dow);
