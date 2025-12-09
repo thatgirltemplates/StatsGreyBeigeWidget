@@ -8,233 +8,231 @@
 
 <style>
 body {
-    margin: 0;
-    padding: 0;
-    font-family: "Inter", sans-serif;
-    background: transparent;
-    color: #4B4947;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  background: transparent;
+  color: #4B4947;
 }
 
 /* ==============================
-   PANEL — narrowed + soft glow
+   PANEL — SAME STYLE, SMALLER
 ================================= */
 .panel {
-    width: 180px;   /* NEW: perfect for Notion sidebar */
-    padding: 14px;  /* slightly reduced padding */
-    border-radius: 22px;
+  width: 165px;          /* smaller + narrower for sidebar */
+  padding: 12px;         /* slightly tighter padding */
+  border-radius: 22px;
 
-    background: linear-gradient(to bottom, #FFFFFF 0%, #F4F3F1 100%);
-    border: 1px solid rgba(80,78,76,0.22);
+  background: linear-gradient(to bottom, #FFFFFF 0%, #F4F3F1 100%);
+  border: 1px solid rgba(80,78,76,0.22);
+  box-shadow:
+    0 3px 10px rgba(0,0,0,0.04),
+    0 8px 22px rgba(0,0,0,0.06),
+    inset 0 1px 3px rgba(255,255,255,0.6);
 
-    box-shadow:
-        0 3px 10px rgba(0,0,0,0.04),
-        0 8px 22px rgba(0,0,0,0.06),
-        inset 0 1px 3px rgba(255,255,255,0.6);
+  filter:
+    drop-shadow(0 1px 4px rgba(0,0,0,0.06))
+    drop-shadow(0 4px 12px rgba(0,0,0,0.04));
 
-    filter:
-        drop-shadow(0 1px 4px rgba(0,0,0,0.06))
-        drop-shadow(0 4px 12px rgba(0,0,0,0.04));
-
-    position: relative;
+  position: relative;
 }
 
-/* Sheen top */
+/* top sheen */
 .panel::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 28%;
-    background: linear-gradient(to bottom, rgba(255,255,255,0.55), transparent);
-    border-radius: inherit;
-    pointer-events: none;
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 26%;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.55), transparent);
+  border-radius: inherit;
+  pointer-events: none;
 }
 
 /* ==============================
-   MINI LUXE SECTIONS (A2)
+   MINI LUXE SECTIONS (same style)
 ================================= */
 .section {
-    padding: 10px 12px; /* narrowed for sidebar */
-    border-radius: 18px;
+  padding: 9px 10px;      /* slightly smaller */
+  border-radius: 18px;
 
-    background: linear-gradient(to bottom, #FFFFFF 0%, #F6F5F4 100%);
-    border: 1px solid rgba(80,78,76,0.22);
+  background: linear-gradient(to bottom, #FFFFFF 0%, #F6F5F4 100%);
+  border: 1px solid rgba(80,78,76,0.22);
+  box-shadow:
+    0 3px 10px rgba(0,0,0,0.03),
+    inset 0 1px 2px rgba(255,255,255,0.6);
 
-    box-shadow:
-        0 3px 10px rgba(0,0,0,0.03),
-        inset 0 1px 2px rgba(255,255,255,0.6);
-
-    margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
-/* Title */
+/* title row */
 .title-row {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 4px;
 }
 
 .title-row img {
-    width: 13px;
-    opacity: 0.7;
-    filter: brightness(0.45) sepia(0.2) saturate(0.6);
+  width: 11px;
+  opacity: 0.7;
+  filter: brightness(0.45) sepia(0.2) saturate(0.6); /* warm stone tint */
 }
 
 .stat-title {
-    font-size: 9px;
-    text-transform: uppercase;
-    letter-spacing: 1.4px;
-    opacity: 0.6;
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+  opacity: 0.6;
 }
 
-/* Percent */
+/* percentage text */
 .percent {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 19px;
-    margin-bottom: 6px;
-    color: #3A3938;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 17px;        /* slightly down from 20 */
+  margin-bottom: 5px;
+  color: #3A3938;
 }
 
 /* ==============================
-   PROGRESS BAR
+   PROGRESS BAR (same style, thinner)
 ================================= */
 .bar {
-    width: 100%;
-    height: 7px;
-    background: linear-gradient(to bottom, #EAE7E4, #D7D4CF);
-    border-radius: 40px;
-    overflow: hidden;
-
-    box-shadow:
-        inset 1px 1px 3px rgba(255,255,255,0.6),
-        inset -2px -2px 4px rgba(0,0,0,0.06);
+  width: 100%;
+  height: 6px;            /* was 8px */
+  background: linear-gradient(to bottom, #EAE7E4, #D7D4CF);
+  border-radius: 40px;
+  overflow: hidden;
+  box-shadow:
+    inset 1px 1px 3px rgba(255,255,255,0.6),
+    inset -2px -2px 4px rgba(0,0,0,0.06);
 }
 
 .fill {
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(90deg, #A7A39D, #7E7A75);
-    border-radius: 40px;
-
-    animation: fillBar 2s forwards ease-out;
-    position: relative;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #A7A39D, #7E7A75);
+  border-radius: 40px;
+  animation: fillBar 2s forwards ease-out;
+  position: relative;
 }
 
-/* Shimmer — softened */
+/* shimmer — same feel, scaled */
 .fill::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -50px;
-    width: 45px;
-    height: 100%;
-    background: rgba(255,255,255,0.35);
-    filter: blur(5px);
-    animation: shimmer 3.6s infinite linear;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -45px;
+  width: 40px;
+  height: 100%;
+  background: rgba(255,255,255,0.35);
+  filter: blur(4px);
+  animation: shimmer 3.2s infinite linear;
 }
 
 @keyframes fillBar {
-    from { width: 0%; }
-    to { width: var(--progress); }
+  from { width: 0%; }
+  to   { width: var(--progress); }
 }
 
 @keyframes shimmer {
-    0% { left: -50px; }
-    100% { left: 100%; }
+  0%   { left: -45px; }
+  100% { left: 100%; }
 }
 </style>
-
 </head>
 <body>
 
 <div class="panel">
 
-    <div class="section">
-        <div class="title-row">
-            <img src="https://img.icons8.com/ios-glyphs/30/calendar.png">
-            <div class="stat-title">Year</div>
-        </div>
-        <div class="percent" id="yearPercent">0%</div>
-        <div class="bar"><div class="fill" id="yearFill"></div></div>
+  <div class="section">
+    <div class="title-row">
+      <img src="https://img.icons8.com/ios-glyphs/30/calendar.png">
+      <div class="stat-title">Year</div>
     </div>
+    <div class="percent" id="yearPercent">0%</div>
+    <div class="bar"><div class="fill" id="yearFill"></div></div>
+  </div>
 
-    <div class="section">
-        <div class="title-row">
-            <img src="https://img.icons8.com/ios-glyphs/30/tear-off-calendar.png">
-            <div class="stat-title">Month</div>
-        </div>
-        <div class="percent" id="monthPercent">0%</div>
-        <div class="bar"><div class="fill" id="monthFill"></div></div>
+  <div class="section">
+    <div class="title-row">
+      <img src="https://img.icons8.com/ios-glyphs/30/tear-off-calendar.png">
+      <div class="stat-title">Month</div>
     </div>
+    <div class="percent" id="monthPercent">0%</div>
+    <div class="bar"><div class="fill" id="monthFill"></div></div>
+  </div>
 
-    <div class="section">
-        <div class="title-row">
-            <img src="https://img.icons8.com/ios-glyphs/30/week-view.png">
-            <div class="stat-title">Week</div>
-        </div>
-        <div class="percent" id="weekPercent">0%</div>
-        <div class="bar"><div class="fill" id="weekFill"></div></div>
+  <div class="section">
+    <div class="title-row">
+      <img src="https://img.icons8.com/ios-glyphs/30/week-view.png">
+      <div class="stat-title">Week</div>
     </div>
+    <div class="percent" id="weekPercent">0%</div>
+    <div class="bar"><div class="fill" id="weekFill"></div></div>
+  </div>
 
-    <div class="section">
-        <div class="title-row">
-            <img src="https://img.icons8.com/ios-glyphs/30/sun.png">
-            <div class="stat-title">Day</div>
-        </div>
-        <div class="percent" id="dayPercent">0%</div>
-        <div class="bar"><div class="fill" id="dayFill"></div></div>
+  <div class="section">
+    <div class="title-row">
+      <img src="https://img.icons8.com/ios-glyphs/30/sun.png">
+      <div class="stat-title">Day</div>
     </div>
+    <div class="percent" id="dayPercent">0%</div>
+    <div class="bar"><div class="fill" id="dayFill"></div></div>
+  </div>
 
 </div>
 
 <script>
 function calcProgress() {
-    const now = new Date();
+  const now = new Date();
 
-    const startY = new Date(now.getFullYear(),0,1);
-    const endY = new Date(now.getFullYear()+1,0,1);
-    const y = ((now - startY)/(endY - startY))*100;
+  // YEAR
+  const startY = new Date(now.getFullYear(),0,1);
+  const endY   = new Date(now.getFullYear()+1,0,1);
+  const y      = ((now - startY)/(endY - startY))*100;
 
-    const startM = new Date(now.getFullYear(), now.getMonth(), 1);
-    const endM = new Date(now.getFullYear(), now.getMonth()+1, 1);
-    const m = ((now - startM)/(endM - startM))*100;
+  // MONTH
+  const startM = new Date(now.getFullYear(), now.getMonth(), 1);
+  const endM   = new Date(now.getFullYear(), now.getMonth()+1, 1);
+  const m      = ((now - startM)/(endM - startM))*100;
 
-    const dow = (now.getDay() + 6) % 7;
-    const startW = new Date(now);
-    startW.setDate(now.getDate() - dow);
-    const endW = new Date(startW);
-    endW.setDate(startW.getDate() + 7);
-    const w = ((now - startW)/(endW - startW))*100;
+  // WEEK (Monday-based)
+  const dow    = (now.getDay() + 6) % 7;
+  const startW = new Date(now);
+  startW.setDate(now.getDate() - dow);
+  const endW   = new Date(startW);
+  endW.setDate(startW.getDate() + 7);
+  const w      = ((now - startW)/(endW - startW))*100;
 
-    const startD = new Date(now.setHours(0,0,0,0));
-    const endD = new Date(now.setHours(24,0,0,0));
-    const d = ((Date.now() - startD)/(endD - startD))*100;
+  // DAY
+  const startD = new Date(now.setHours(0,0,0,0));
+  const endD   = new Date(now.setHours(24,0,0,0));
+  const d      = ((Date.now() - startD)/(endD - startD))*100;
 
-    animate("year", y);
-    animate("month", m);
-    animate("week", w);
-    animate("day", d);
+  animate("year",  y);
+  animate("month", m);
+  animate("week",  w);
+  animate("day",   d);
 }
 
 function animate(prefix, value) {
-    const percent = document.getElementById(prefix+"Percent");
-    const fill = document.getElementById(prefix+"Fill");
+  const percent = document.getElementById(prefix + "Percent");
+  const fill    = document.getElementById(prefix + "Fill");
 
-    let start = 0;
-    let end = Math.round(value);
-    let duration = 1500;
-    let step = end / (duration / 16);
+  let start    = 0;
+  const end    = Math.round(value);
+  const step   = end / 90;
 
-    let interval = setInterval(()=>{
-        start += step;
-        if(start >= end){
-            start = end;
-            clearInterval(interval);
-        }
-        percent.innerText = Math.round(start) + "%";
-    }, 16);
+  const interval = setInterval(() => {
+    start += step;
+    if (start >= end) {
+      start = end;
+      clearInterval(interval);
+    }
+    percent.textContent = Math.round(start) + "%";
+  }, 16);
 
-    fill.style.setProperty("--progress", end + "%");
+  fill.style.setProperty("--progress", end + "%");
 }
 
 calcProgress();
