@@ -16,28 +16,29 @@ body {
 }
 
 /* ==============================
-   PANEL — widened + soft glow
+   PANEL — narrowed + soft glow
 ================================= */
 .panel {
-    width: 210px;  /* wider for Notion sidebar */
-    padding: 16px;
+    width: 180px;   /* NEW: perfect for Notion sidebar */
+    padding: 14px;  /* slightly reduced padding */
     border-radius: 22px;
 
     background: linear-gradient(to bottom, #FFFFFF 0%, #F4F3F1 100%);
-
     border: 1px solid rgba(80,78,76,0.22);
+
     box-shadow:
         0 3px 10px rgba(0,0,0,0.04),
         0 8px 22px rgba(0,0,0,0.06),
         inset 0 1px 3px rgba(255,255,255,0.6);
 
-    /* soft floating glow like left widget */
     filter:
         drop-shadow(0 1px 4px rgba(0,0,0,0.06))
         drop-shadow(0 4px 12px rgba(0,0,0,0.04));
+
+    position: relative;
 }
 
-/* sheen */
+/* Sheen top */
 .panel::before {
     content: "";
     position: absolute;
@@ -45,13 +46,14 @@ body {
     height: 28%;
     background: linear-gradient(to bottom, rgba(255,255,255,0.55), transparent);
     border-radius: inherit;
+    pointer-events: none;
 }
 
 /* ==============================
-   MINI LUXE CARD SECTIONS (A2)
+   MINI LUXE SECTIONS (A2)
 ================================= */
 .section {
-    padding: 12px 14px;
+    padding: 10px 12px; /* narrowed for sidebar */
     border-radius: 18px;
 
     background: linear-gradient(to bottom, #FFFFFF 0%, #F6F5F4 100%);
@@ -61,10 +63,10 @@ body {
         0 3px 10px rgba(0,0,0,0.03),
         inset 0 1px 2px rgba(255,255,255,0.6);
 
-    margin-bottom: 14px;
+    margin-bottom: 12px;
 }
 
-/* title row */
+/* Title */
 .title-row {
     display: flex;
     align-items: center;
@@ -75,31 +77,30 @@ body {
 .title-row img {
     width: 13px;
     opacity: 0.7;
-    filter: brightness(0.4) sepia(0.2) saturate(0.6); /* warm stone tint */
+    filter: brightness(0.45) sepia(0.2) saturate(0.6);
 }
 
 .stat-title {
     font-size: 9px;
     text-transform: uppercase;
-    letter-spacing: 1.6px;
+    letter-spacing: 1.4px;
     opacity: 0.6;
 }
 
-/* percent number */
+/* Percent */
 .percent {
     font-family: "Cormorant Garamond", serif;
-    font-size: 20px;
-    font-weight: 500;
+    font-size: 19px;
     margin-bottom: 6px;
     color: #3A3938;
 }
 
 /* ==============================
-   LUXE PROGRESS BAR
+   PROGRESS BAR
 ================================= */
 .bar {
     width: 100%;
-    height: 8px;
+    height: 7px;
     background: linear-gradient(to bottom, #EAE7E4, #D7D4CF);
     border-radius: 40px;
     overflow: hidden;
@@ -112,7 +113,6 @@ body {
 .fill {
     height: 100%;
     width: 0%;
-
     background: linear-gradient(90deg, #A7A39D, #7E7A75);
     border-radius: 40px;
 
@@ -120,7 +120,7 @@ body {
     position: relative;
 }
 
-/* Shimmer — softer & slower */
+/* Shimmer — softened */
 .fill::after {
     content: "";
     position: absolute;
@@ -130,7 +130,6 @@ body {
     height: 100%;
     background: rgba(255,255,255,0.35);
     filter: blur(5px);
-
     animation: shimmer 3.6s infinite linear;
 }
 
@@ -192,17 +191,14 @@ body {
 function calcProgress() {
     const now = new Date();
 
-    // YEAR
     const startY = new Date(now.getFullYear(),0,1);
     const endY = new Date(now.getFullYear()+1,0,1);
     const y = ((now - startY)/(endY - startY))*100;
 
-    // MONTH
     const startM = new Date(now.getFullYear(), now.getMonth(), 1);
     const endM = new Date(now.getFullYear(), now.getMonth()+1, 1);
     const m = ((now - startM)/(endM - startM))*100;
 
-    // WEEK
     const dow = (now.getDay() + 6) % 7;
     const startW = new Date(now);
     startW.setDate(now.getDate() - dow);
@@ -210,7 +206,6 @@ function calcProgress() {
     endW.setDate(startW.getDate() + 7);
     const w = ((now - startW)/(endW - startW))*100;
 
-    // DAY
     const startD = new Date(now.setHours(0,0,0,0));
     const endD = new Date(now.setHours(24,0,0,0));
     const d = ((Date.now() - startD)/(endD - startD))*100;
